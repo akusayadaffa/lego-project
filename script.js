@@ -13,12 +13,17 @@ var lowerHue = document.getElementById('lower-hue');
 var lowerSaturation = document.getElementById('lower-saturation');
 var lowerLightness = document.getElementById('lower-lightness');
 
+// Add event listeners for both click and touch events
 explode.addEventListener('click', explodeMinifigure);
+explode.addEventListener('touchstart', explodeMinifigure);
 randomize.addEventListener('click', randomizeInputs);
+randomize.addEventListener('touchstart', randomizeInputs);
 expressionRangeInput.addEventListener('input', setExpression);
+expressionRangeInput.addEventListener('touchstart', setExpression);
 
 for (var i = 0; i < colorRangeInput.length; i++) {
   colorRangeInput[i].addEventListener('input', setColors);
+  colorRangeInput[i].addEventListener('touchstart', setColors);
 }
 
 function getRandomNum(min, max) {
@@ -33,7 +38,7 @@ function explodeMinifigure() {
   } else {
     explode.innerHTML = 'Explode';
   }
-};
+}
 
 function randomizeInputs() {
   var randomExpression = getRandomNum(0, 5);
@@ -54,12 +59,12 @@ function randomizeInputs() {
   
   setExpression();
   setColors();
-};
+}
 
 function setExpression() {
   var expressionVal = parseInt(expressionRangeInput.value);
   faces.style.transform = 'translateX(-' + expressionVal + '%)';
-};
+}
 
 function setColors() {
   var upperHueVal = parseInt(upperHue.value);
@@ -71,4 +76,4 @@ function setColors() {
   
   upperBody.style.color = 'hsl(' + upperHueVal + ',' + upperSaturationVal + '%,' + upperLightnessVal + '%)';
   lowerBody.style.color = 'hsl(' + lowerHueVal + ',' + lowerSaturationVal + '%,' + lowerLightnessVal + '%)';
-};
+}
